@@ -1,5 +1,4 @@
 <?php
-    #test
     session_start();
     include("database.php");
 
