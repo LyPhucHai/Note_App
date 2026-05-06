@@ -15,7 +15,7 @@
             header("Location: home.php");
             exit();
         } else {
-            echo "Sai email hoặc mật khẩu";
+            $error = "Sai email hoặc mật khẩu";
         }
     }
 ?>
@@ -26,32 +26,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', serif;
+        }
+
         body {
-            font-family: Times New Roman, serif;
-            background: linear-gradient(to right, #ffecd2, #fcb69f);
+            height: 100vh;
             display: flex;
             justify-content: center;
-            align-self: center;
-            height: 100vh;
+            align-items: center;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
         }
-
-        .box {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            width: 300px; 
-            text-align: center;
-        }
-
+        
         .container {
             background: white;
-            padding: 20px;
-            border-radius: 10px;
-            width: 300px;
+            padding: 30px;
+            border-radius: 12px;
+            width: 320px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
@@ -63,9 +58,11 @@
         input {
             width: 100%;
             padding: 10px;
+            margin: 10px 0;
+            border-radius: 6px;
             background: #f0f0f0;
-            border: none;
-            color: white;
+            border: 1px solid #ccc;
+            color: #333;
             cursor: pointer;
         }
 
@@ -76,17 +73,22 @@
             border: none;
             color: white;
             font-weight: bold;
+            border-radius: 6px;
             cursor: pointer;
             transition: background 0.3s;
         }
 
-        .link {
-            margin-top: 10px;
-            display: block;
-            color: #333;
-            text-decoration: none;
+        button:hover {
+            background: #feb47b;
         }
 
+        .link a {
+            color: #ff7e5f;
+            text-decoration: none;
+        }
+        .link a:hover {
+            text-decoration: underline;
+        }
         .error {
             color: red;
             margin-top: 10px;
@@ -94,17 +96,22 @@
     </style>
 </head>
 <body>
-    <h2>Login</h2>
+    <div class="container">
+        <h2>Login</h2>
 
-    <?php if (isset($error)): ?>
-        <p class="error"><?php echo $error; ?></p>
-    <?php endif; ?>
+        <?php if (isset($error)): ?>
+            <p class="error"><?php echo $error; ?></p>
+        <?php endif; ?>
 
-    <form method="POST" action="">
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <input type="submit" value="Login">
-    </form>
-    <a href="register.php" class="link">Don't have an account? Register here</a>
+        <form method="POST" action="">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit" value="Login">Login</button>
+        </form>
+        <div class="link">
+            <p>Don't have an account?
+            <a href="register.php">Register here</a></p>
+        </div>
+    </div>
 </body>
 </html>
